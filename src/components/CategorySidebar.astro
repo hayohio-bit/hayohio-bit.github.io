@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const categories = [
+  ...new Set(
+    allPosts.map((post) => post.data.category).filter((category) => !!category)
+  ),
+];
+
+// Get current path to determine active category
+const currentPath = Astro.url.pathname;
+const currentCategory = currentPath.match(/\/categories\/([^/]+)/)?.[1];
+---
+
+<aside class="w-full md:w-64 shrink-0">
+  <div
+    class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sticky top-4 border border-gray-200 dark:border-gray-700"
+  >
+    <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+      Categories
+    </h2>
+    <ul class="space-y-2">
+      <li>
+        <a
+          href="/blog"
+          class={`block px-4 py-2 rounded-lg transition-colors ${
+            !currentCategory
+              ? "bg-blue-600 text-white"
+              : "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+          }`}
+        >
+          All Posts
+          <span
+            class={`text-sm ml-2 ${
+              !currentCategory
+                ? "text-blue-200"
+                : "text-gray-500 dark:text-gray-400"
+            }`}
+          >
+            ({allPosts.length})
+          </span>
+        </a>
+      </li>
+      {
+        categories.map((category) => {
+          const count = allPosts.filter(
+            (post) => post.data.category === category
+          ).length;
+          const isActive = currentCategory === category;
+          return (
+            <li>
+              <a
+                href={`/categories/${category}`}
+                class={`block px-4 py-2 rounded-lg transition-colors ${
+                  isActive
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                }`}
+              >
+                {category}
+                <span
+                  class={`text-sm ml-2 ${
+                    isActive
+                      ? "text-blue-200"
+                      : "text-gray-500 dark:text-gray-400"
+                  }`}
+                >
+                  ({count})
+                </span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</aside>

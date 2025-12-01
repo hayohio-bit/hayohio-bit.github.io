@@ -3,6 +3,7 @@ title: "부트캠프 한 달 차, 나의 첫 개발 블로그 시작"
 description: "개발자로 커리어를 시작하며 남기는 첫 번째 기록."
 pubDate: "Dec 01 2025"
 heroImage: "../../assets/cloude_9.jpg"
+category: "Learning"
 ---
 
 ## Why

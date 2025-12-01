@@ -1,169 +1,90 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import { Image } from "astro:assets";
-import heroImage from "../assets/cloude_9.jpg";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5); // 최근 글 5개만 표시
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body
+    class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased flex flex-col min-h-screen transition-colors"
+  >
     <Header />
-    <main class="home-main">
-      <div class="hero-section">
-        <Image
-          src={heroImage}
-          alt="Hero Image"
-          class="hero-image"
-          width={1200}
-          height={600}
-        />
-        <div class="hero-overlay">
-          <h1 class="hero-title">안녕하세요! 👋</h1>
-          <p class="hero-subtitle">
-            개발자로 성장하는 여정을 기록하는 공간입니다.
-          </p>
-        </div>
-      </div>
-
-      <div class="intro-section">
-        <h2>블로그 소개</h2>
-        <p>
+    <main class="w-full max-w-4xl mx-auto px-4 py-12 flex-grow">
+      {/* Hero Section: 자기소개 */}
+      <section
+        class="mb-16 py-12 text-center md:text-left border-b border-gray-100 dark:border-gray-800"
+      >
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          안녕하세요!👋 개발자로 성장하는 여정을 기록하는 공간입니다.
+        </h1>
+        <p
+          class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl"
+        >
           부트캠프에서 배운 내용과 개발하며 겪은 경험들을 기록합니다. 에러 해결
-          과정, 새로 배운 개념, 프로젝트 회고 등을 담고 있어요.
+          과정, 새로 배운 개념, 프로젝트 회고 등을 담고 있어요.<br />
+          완벽하지 않더라도 오늘 이해한 만큼만, 나중의 내가 다시 봐도 도움이 될 만한
+          내용을 천천히 쌓아가고 있습니다.
         </p>
-        <p>
-          완벽하지 않아도 괜찮습니다. 오늘 이해한 만큼만, 나중의 제가 다시 봐도
-          도움이 될 만한 내용을 천천히 쌓아가고 있습니다.
-        </p>
-      </div>
+        <div class="mt-8 flex gap-4 justify-center md:justify-start">
+          <a
+            href="/about"
+            class="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors no-underline"
+          >
+            소개 더보기
+          </a>
+          <a
+            href="/blog"
+            class="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors no-underline"
+          >
+            블로그 글 보기
+          </a>
+        </div>
+      </section>
 
-      <div class="cta-section">
-        <a href="/blog" class="cta-button">블로그 글 보러가기 →</a>
-      </div>
+      {/* Recent Posts Section: 최근 글 */}
+      <section>
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold">최근 작성한 글</h2>
+          <a
+            href="/blog"
+            class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium no-underline"
+          >
+            전체보기 →
+          </a>
+        </div>
+
+        <ul class="space-y-8">
+          {
+            posts.map((post) => (
+              <li class="group">
+                <a href={`/blog/${post.id}/`} class="block no-underline">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
+                    {post.data.description}
+                  </p>
+                  <div class="text-sm text-gray-400">
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
     </main>
     <Footer />
   </body>
 </html>
-
-<style>
-  .home-main {
-    padding: 0;
-    max-width: 100%;
-  }
-
-  .hero-section {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-    margin-bottom: 4rem;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.6)
-    );
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-  }
-
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin: 0 0 1rem 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  }
-
-  .intro-section {
-    max-width: 65ch;
-    margin: 0 auto 4rem;
-    padding: 0 2rem;
-  }
-
-  .intro-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-  }
-
-  .intro-section p {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: var(--text-color);
-  }
-
-  .cta-section {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .cta-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--accent-color);
-    color: white;
-    font-size: 1.125rem;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    opacity: 0.9;
-    text-decoration: none;
-  }
-
-  @media (max-width: 768px) {
-    .hero-section {
-      height: 350px;
-    }
-
-    .hero-title {
-      font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.125rem;
-    }
-
-    .intro-section {
-      padding: 0 1.5rem;
-    }
-  }
-</style>

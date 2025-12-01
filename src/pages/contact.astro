@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+---
+
+<Layout
+  title="문의하기"
+  description="문의하기 페이지입니다."
+  pubDate={new Date("2025-12-01")}
+>
+  <p>
+    블로그 내용에 대한 질문, 제안, 혹은 협업 문의가 있으시다면 언제든 연락
+    주세요.
+  </p>
+
+  <div class="not-prose mt-8">
+    <div
+      class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700"
+    >
+      <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">
+        📧 Email
+      </h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-6">
+        <a
+          href="mailto:your-email@example.com"
+          class="text-blue-600 dark:text-blue-400 hover:underline"
+          >hayohio@gmail.com</a
+        >
+      </p>
+
+      <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">
+        🐙 GitHub
+      </h3>
+      <p class="text-gray-600 dark:text-gray-300">
+        <a
+          href="https://github.com/hayohio-bit"
+          target="
+          _blank"
+          class="text-blue-600 dark:text-blue-400 hover:underline"
+          >github.com/hayohio</a
+        >
+      </p>
+    </div>
+  </div>
+</Layout>

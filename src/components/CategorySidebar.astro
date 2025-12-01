@@ -23,7 +23,7 @@ const currentCategory = currentPath.match(/\/categories\/([^/]+)/)?.[1];
     <ul class="space-y-2">
       <li>
         <a
-          href="/learn-dev-run/blog"
+          href="/blog"
           class={`block px-4 py-2 rounded-lg transition-colors ${
             !currentCategory
               ? "bg-blue-600 text-white"
@@ -51,7 +51,7 @@ const currentCategory = currentPath.match(/\/categories\/([^/]+)/)?.[1];
           return (
             <li>
               <a
-                href={`/learn-dev-run/categories/${category}`}
+                href={`/categories/${category}`}
                 class={`block px-4 py-2 rounded-lg transition-colors ${
                   isActive
                     ? "bg-blue-600 text-white"

@@ -35,10 +35,7 @@ const posts = (await getCollection("blog")).sort((a, b) => {
           {
             posts.map((post) => (
               <li class="group">
-                <a
-                  href={`/learn-dev-run/blog/${post.id}/`}
-                  class="block no-underline"
-                >
+                <a href={`/blog/${post.id}/`} class="block no-underline">
                   <div class="mb-4 overflow-hidden rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
                     {post.data.heroImage && (
                       <Image

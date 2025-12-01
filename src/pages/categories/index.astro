@@ -21,13 +21,13 @@ const pageTitle = "Category Index";
     class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased flex flex-col min-h-screen transition-colors"
   >
     <Header />
-    <main class="w-full max-w-4xl mx-auto px-4 py-12 flex-grow">
+    <main class="w-full max-w-4xl mx-auto px-4 py-12 grow">
       <h1 class="text-4xl font-bold mb-8">Categories</h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {
           categories.map((category) => (
             <a
-              href={`/learn-dev-run/categories/${category}`}
+              href={`/categories/${category}`}
               class="block p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all border border-gray-100 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 group"
             >
               <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 mb-2">

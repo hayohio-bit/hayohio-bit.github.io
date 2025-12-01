@@ -44,14 +44,14 @@ const pageTitle = `${category} Posts`;
   >
     <Header />
     <main
-      class="w-full max-w-6xl mx-auto px-4 py-12 flex-grow flex flex-col md:flex-row gap-8"
+      class="w-full max-w-6xl mx-auto px-4 py-12 grow flex flex-col md:flex-row gap-8"
     >
       <CategorySidebar />
       <section class="flex-1">
         <div class="mb-8">
           <h1 class="text-4xl font-bold mb-4">{category}</h1>
           <a
-            href="/learn-dev-run/blog"
+            href="/blog"
             class="text-blue-600 dark:text-blue-400 hover:underline"
             >← Back to all posts</a
           >
@@ -61,10 +61,7 @@ const pageTitle = `${category} Posts`;
           {
             posts.map((post) => (
               <li class="group">
-                <a
-                  href={`/learn-dev-run/blog/${post.id}/`}
-                  class="block no-underline"
-                >
+                <a href={`/blog/${post.id}/`} class="block no-underline">
                   <div class="mb-4 overflow-hidden rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
                     {post.data.heroImage && (
                       <Image

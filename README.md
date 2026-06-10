@@ -1,4 +1,4 @@
-# 🚀 SUNHAYOUNG - Java & Spring Boot Backend Developer
+# 🚀 SUNHAYOUNG - Backend Developer
 
 <div align="center">
 

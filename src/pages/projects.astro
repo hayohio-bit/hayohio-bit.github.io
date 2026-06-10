@@ -52,7 +52,7 @@ import "../styles/project-detail.css";
         만든 것들<span style="color:var(--accent-text);">.</span>
       </h1>
       <p style="margin-top:14px;font-size:16px;color:var(--fg-3);max-width:52ch;line-height:1.55;word-break:keep-all;">
-        부트캠프와 개인 프로젝트를 통해 만든 서비스들입니다.<br/>모든 프로젝트는 <strong style="color:var(--fg-1);">실제 배포된 상태</strong>입니다.
+        부트캠프와 개인 프로젝트를 통해 만든 서비스들입니다.<br/>모든 프로젝트는 <strong style="color:var(--fg-1);">실제 서버 배포 과정을 거쳐 완성</strong>되었습니다.
       </p>
       <div class="ds-stat-grid" style="margin-top:44px;max-width:480px;">
         <div class="ds-stat-cell">
@@ -109,9 +109,9 @@ import "../styles/project-detail.css";
     <div class="blog-cta">
       <div class="blog-cta-inner">
         <div>
-          <p style="font-size:15px;color:var(--fg-2);margin:0;">각 프로젝트 개발 과정의 상세한 기술 기록은 기술 블로그에서 확인할 수 있습니다.</p>
+          <p style="font-size:13px;color:var(--fg-4);margin:0;">각 프로젝트 개발 과정의 상세한 기술 기록은 기술 블로그에서 확인할 수 있습니다.</p>
         </div>
-        <a href="https://blog.ssunhy.com/" target="_blank" rel="noopener noreferrer" class="ds-btn primary" style="white-space:nowrap;">
+        <a href="https://ssunhy.com/" target="_blank" rel="noopener noreferrer" class="ds-btn ghost" style="white-space:nowrap; padding:10px 16px; font-size:13px;">
           기술 블로그 <span class="arr">↗</span>
         </a>
       </div>
@@ -145,7 +145,7 @@ import "../styles/project-detail.css";
               </div>
               <div class="pd-actions">
                 {p.githubUrl && <a href={p.githubUrl} target="_blank" rel="noopener noreferrer" class="project-link" aria-label={`${p.title} GitHub 저장소 (새 창)`}><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg> GitHub ↗</a>}
-                {p.demoUrl && <a href={p.demoUrl} target="_blank" rel="noopener noreferrer" class="project-link" style="border-color:var(--accent-line);color:var(--accent-text);" aria-label={`${p.title} Live Demo (새 창)`}>Live Demo ↗</a>}
+                {p.demoUrl && <a href={p.demoUrl} target="_blank" rel="noopener noreferrer" class="project-link" style="border-color:var(--accent-line);color:var(--accent-text);" aria-label={`${p.title} Live Demo (새 창)`} title={p.slug === 'spring-mvc' ? "무료 호스팅(Render) 환경으로 인해 첫 접속 시 30초~50초의 지연이 발생할 수 있습니다." : undefined}>Live Demo ↗</a>}
               </div>
             </div>
 
@@ -304,6 +304,7 @@ import "../styles/project-detail.css";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" is:inline></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js" is:inline></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml-doc.min.js" is:inline></script>
+  <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js" is:inline></script>
   <script type="module" is:inline>
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ 
@@ -320,7 +321,7 @@ import "../styles/project-detail.css";
   </script>
 
   <script is:inline>
-    const validSlugs = ['spring-mvc','daypoo','creative-archive','62dangnyang','portmanager'];
+    const validSlugs = ['daypoo','syncbridge','knotnote','spring-mvc','creative-archive','62dangnyang','mermaid-studio','portmanager'];
 
     function showProjectDetail(slug) {
       document.getElementById('projects-list').style.display = 'none';
@@ -333,11 +334,82 @@ import "../styles/project-detail.css";
         target.style.display = 'block';
         // Render mermaid
         if (window.__mermaidReady) {
-          target.querySelectorAll('.mermaid').forEach(el => {
-            if (!el.getAttribute('data-processed')) {
-              window.__mermaid.run({ nodes: [el] });
-            }
-          });
+          const mermaidNodes = Array.from(target.querySelectorAll('.mermaid')).filter(el => !el.getAttribute('data-processed'));
+          if (mermaidNodes.length > 0) {
+            window.__mermaid.run({ nodes: mermaidNodes }).then(() => {
+              mermaidNodes.forEach(el => {
+                const svg = el.querySelector('svg');
+                if (svg && window.svgPanZoom) {
+                  requestAnimationFrame(() => {
+                    const viewBox = svg.getAttribute('viewBox');
+                    let height = 400;
+                    const container = el.closest('.pd-mermaid');
+                    if (viewBox && container) {
+                      const parts = viewBox.split(/[\s,]+/).filter(Boolean).map(Number);
+                      const w = parts[2];
+                      let h = parts[3];
+                      if (w && h) {
+                        // Mermaid가 커스텀 폰트 높이를 과소평가하여 하단이 잘리는 현상 방지 (하단 여백 40 추가)
+                        h += 40;
+                        svg.setAttribute('viewBox', `${parts[0]} ${parts[1]} ${w} ${h}`);
+                        
+                        const availableWidth = (container.clientWidth || 800) - 40;
+                        // 최대 1.1배까지만 커지도록 제한하여 글씨가 과도하게 커지는 현상 방지
+                        const scale = Math.min(availableWidth / w, 1.1);
+                        let targetHeight = h * scale;
+                        // 세로로 긴 다이어그램이 너무 작아지지 않도록 최대 높이를 700px까지 넉넉하게 허용
+                        height = Math.max(150, Math.min(targetHeight, 700));
+                      }
+                    }
+                    if (container) {
+                      container.style.height = (height + 40) + 'px';
+                      container.style.overflow = 'hidden';
+                      container.style.position = 'relative';
+                    }
+                    el.style.width = '100%';
+                    el.style.height = '100%';
+                    el.style.margin = '0';
+                    el.style.padding = '0';
+                    el.style.overflow = 'visible';
+                    svg.style.width = '100%';
+                    svg.style.height = '100%';
+                    svg.style.maxWidth = 'none';
+                    const pz = window.svgPanZoom(svg, {
+                      zoomEnabled: true,
+                      controlIconsEnabled: false,
+                      fit: true,
+                      contain: true,
+                      center: true,
+                      minZoom: 0.1,
+                      maxZoom: 10
+                    });
+
+                    // Custom sleek controls
+                    if (container) {
+                      const controls = document.createElement('div');
+                      controls.className = 'pd-zoom-controls';
+                      controls.innerHTML = `
+                        <button class="pd-zc-btn" data-action="in" title="Zoom In">+</button>
+                        <button class="pd-zc-btn" data-action="reset" title="Reset Zoom">↺</button>
+                        <button class="pd-zc-btn" data-action="out" title="Zoom Out">−</button>
+                      `;
+                      container.appendChild(controls);
+
+                      controls.addEventListener('click', (e) => {
+                        const action = e.target.getAttribute('data-action');
+                        if (action === 'in') pz.zoomIn();
+                        if (action === 'out') pz.zoomOut();
+                        if (action === 'reset') {
+                          pz.resetZoom();
+                          pz.center();
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            }).catch(e => console.error('Mermaid render error', e));
+          }
         }
         // Highlight code
         if (window.Prism) Prism.highlightAllUnder(target);

@@ -70,27 +70,51 @@
 
 /* Mermaid */
 .pd-mermaid{overflow-x:auto;padding:20px;background:var(--bg-1);border:1px solid var(--border-2);border-radius:var(--r-lg);margin:16px 0}
+.pd-mermaid pre.mermaid { width: 100%; height: 100%; margin: 0; padding: 0; display: block; overflow: visible; background: transparent; border: none; }
 
-/* Mermaid SVG CSS Variable Overrides */
-.pd-mermaid svg { color: var(--fg-1); font-family: var(--font-mono) !important; background: transparent !important; }
+/* Custom Zoom Controls */
+.pd-zoom-controls { position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 4px; z-index: 10; }
+.pd-zc-btn { width: 32px; height: 32px; padding: 0; background: var(--bg-1); border: 1px solid var(--border-2); border-radius: var(--r-sm); color: var(--fg-2); font-family: var(--font-sans); font-size: 16px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: all 0.2s; }
+.pd-zc-btn:hover { background: var(--tint-1); color: var(--fg-1); border-color: var(--accent-line); }
+.pd-zc-btn:active { transform: scale(0.95); }
+.pd-mermaid svg { color: var(--fg-1); font-family: var(--font-mono) !important; background: transparent !important; cursor: grab; }
+.pd-mermaid svg:active { cursor: grabbing; }
+
 /* Sequence Diagram */
-.pd-mermaid .actor { fill: var(--bg-2) !important; stroke: var(--border-3) !important; }
-.pd-mermaid text.actor > tspan, .pd-mermaid text.actor { fill: var(--fg-1) !important; }
-.pd-mermaid .actor-line { stroke: var(--fg-4) !important; }
-.pd-mermaid .messageText, .pd-mermaid .messageText > tspan, .pd-mermaid .signalTextColor { fill: var(--fg-2) !important; }
-.pd-mermaid .messageLine0, .pd-mermaid .messageLine1 { stroke: var(--fg-3) !important; }
-.pd-mermaid #arrowhead path, .pd-mermaid .signal-arrow { fill: var(--fg-3) !important; stroke: none !important; }
-.pd-mermaid .note { fill: var(--tint-1) !important; stroke: var(--border-2) !important; }
-.pd-mermaid .noteText, .pd-mermaid .noteText > tspan { fill: var(--fg-2) !important; }
+.pd-mermaid .actor { fill: var(--bg-2) !important; stroke: var(--accent-line) !important; stroke-width: 2px !important; }
+.pd-mermaid text.actor > tspan, .pd-mermaid text.actor { fill: var(--fg-1) !important; font-weight: 600 !important; }
+.pd-mermaid .actor-line { stroke: var(--border-3) !important; stroke-dasharray: 4 !important; }
+.pd-mermaid .messageText, .pd-mermaid .messageText > tspan, .pd-mermaid .signalTextColor { fill: var(--fg-1) !important; font-weight: 500 !important; }
+.pd-mermaid .messageLine0, .pd-mermaid .messageLine1 { stroke: var(--fg-4) !important; fill: none !important; stroke-width: 1.5px !important; }
+.pd-mermaid #arrowhead path, .pd-mermaid .signal-arrow { fill: var(--fg-4) !important; stroke: none !important; }
+.pd-mermaid .note { fill: rgba(245, 158, 11, 0.1) !important; stroke: rgba(245, 158, 11, 0.4) !important; stroke-width: 1.5px !important; }
+.pd-mermaid .noteText, .pd-mermaid .noteText > tspan { fill: var(--fg-1) !important; }
+.pd-mermaid .loopText, .pd-mermaid .loopText > tspan { fill: var(--fg-2) !important; font-weight: 500 !important; }
+.pd-mermaid .labelBox { fill: var(--bg-2) !important; stroke: var(--border-2) !important; }
+.pd-mermaid .labelText, .pd-mermaid .labelText > tspan { fill: var(--fg-1) !important; font-weight: 600 !important; }
+.pd-mermaid .loopLine { stroke: var(--border-3) !important; stroke-dasharray: 2 !important; }
+
 /* Flowchart */
-.pd-mermaid .node rect, .pd-mermaid .node circle, .pd-mermaid .node polygon { fill: var(--bg-2) !important; stroke: var(--border-3) !important; }
-.pd-mermaid .node .label, .pd-mermaid .node text, .pd-mermaid .node tspan { color: var(--fg-1) !important; fill: var(--fg-1) !important; }
-.pd-mermaid .edgePath path { stroke: var(--fg-4) !important; }
-.pd-mermaid marker path { fill: var(--fg-4) !important; stroke: none !important; }
-.pd-mermaid .edgeLabel { background-color: var(--bg-1) !important; color: var(--fg-2) !important; }
+.pd-mermaid .node rect, .pd-mermaid .node circle, .pd-mermaid .node polygon, .pd-mermaid .node path { fill: var(--bg-2) !important; stroke: var(--accent-line) !important; stroke-width: 2px !important; }
+.pd-mermaid .node .label, .pd-mermaid .node text, .pd-mermaid .node tspan, .pd-mermaid .node div, .pd-mermaid .node span, .pd-mermaid .node p { color: var(--fg-1) !important; fill: var(--fg-1) !important; font-weight: 500 !important; }
+/* Flowchart Edges and Labels */
+.pd-mermaid .edgePath path, .pd-mermaid .flowchart-link { stroke: var(--fg-4) !important; stroke-width: 1.5px !important; fill: none !important; }
+.pd-mermaid .edgeLabel { background-color: var(--bg-1) !important; color: var(--fg-2) !important; font-weight: 500 !important; }
+.pd-mermaid .edgeLabel rect { fill: var(--bg-1) !important; stroke: var(--border-2) !important; rx: 4px; ry: 4px; }
+.pd-mermaid marker, .pd-mermaid marker path { fill: var(--fg-4) !important; stroke: none !important; }
 .pd-mermaid .labelBkg { fill: var(--bg-1) !important; stroke: none !important; }
-.pd-mermaid .cluster rect { fill: var(--tint-1) !important; stroke: var(--border-2) !important; }
-.pd-mermaid .cluster span { color: var(--fg-2) !important; }
+.pd-mermaid .cluster rect { fill: var(--tint-1) !important; stroke: var(--border-2) !important; stroke-dasharray: 4 !important; }
+.pd-mermaid .cluster span { color: var(--fg-2) !important; font-weight: 600 !important; }
+
+/* ER Diagram */
+.pd-mermaid .er.entityBox { fill: var(--bg-2) !important; stroke: var(--accent-line) !important; stroke-width: 2px !important; }
+.pd-mermaid .er.entityLabel { fill: var(--fg-1) !important; font-weight: 600 !important; }
+.pd-mermaid .er.attributeBoxOdd { fill: var(--bg-1) !important; stroke: var(--border-2) !important; }
+.pd-mermaid .er.attributeBoxEven { fill: var(--bg-2) !important; stroke: var(--border-2) !important; }
+.pd-mermaid [class*="er"] text { fill: var(--fg-1) !important; }
+.pd-mermaid .er.relationshipLabelBox { fill: var(--bg-1) !important; stroke: var(--border-2) !important; rx: 4px; ry: 4px; }
+.pd-mermaid .er.relationshipLabel { fill: var(--fg-2) !important; font-weight: 500 !important; }
+.pd-mermaid .er.relationshipLine { stroke: var(--fg-4) !important; fill: none !important; stroke-width: 1.5px !important; }
 /* Timeline */
 .pd-timeline{position:relative;padding-left:28px}
 .pd-timeline::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--border-2)}

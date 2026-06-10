@@ -24,12 +24,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
       .hero-image {
         width: 100%;
-        max-height: 500px;
-        overflow: hidden;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .hero-image img {
         display: block;
-        margin: 0 auto;
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s ease;
@@ -87,11 +92,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <main>
       <article>
         <div class="hero-image">
-          {
-            heroImage && (
-              <Image width={1200} height={600} src={heroImage} alt="" />
-            )
-          }
+          {heroImage && <Image src={heroImage} alt="" />}
         </div>
         <div class="prose animate-fade-in">
           <div class="title">

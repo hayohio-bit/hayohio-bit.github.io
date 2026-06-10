@@ -39,7 +39,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       .bg-grid {
         position: absolute;
         inset: 0;
-        background-image: linear-gradient(var(--border-1) 1px, transparent 1px),
+        background-image:
+          linear-gradient(var(--border-1) 1px, transparent 1px),
           linear-gradient(90deg, var(--border-1) 1px, transparent 1px);
         background-size: 64px 64px;
         mask-image: radial-gradient(
@@ -369,7 +370,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        transition: color 0.2s, transform 0.2s;
+        transition:
+          color 0.2s,
+          transform 0.2s;
       }
       .proj-preview:hover .go {
         color: var(--accent-text);
@@ -389,7 +392,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         background: var(--bg-1);
         border: 1px solid var(--border-2);
         text-decoration: none;
-        transition: border-color 0.2s, color 0.2s, transform 0.2s;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          transform 0.2s;
       }
       .contact-link:hover {
         border-color: var(--accent-line);
@@ -640,35 +646,51 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           [
             {
               name: "DayPoo",
-              ko: "하루를 기록하는 가장 작은 단위",
-              desc: "전국 5만 건 공공 화장실 데이터를 지도로 시각화하고, AI로 건강 인사이트를 제공하는 서비스",
-              techs: ["Spring Boot", "PostgreSQL", "Redis", "Docker"],
+              ko: "위치 기반 AI 헬스케어",
+              desc: "전국 5만 건 공공 화장실 데이터를 지도로 시각화 + AI 건강 인사이트 제공. Virtual Threads, PostGIS, Redis 다목적 활용",
+              techs: ["Java 21", "Spring Boot", "PostGIS", "Redis", "Docker"],
               period: "2026.03 ~ 04",
-              href: "/projects",
+              href: "/projects#daypoo",
+            },
+            {
+              name: "SyncBridge",
+              ko: "IT-비IT 협업 플랫폼",
+              desc: "Spring AI로 직무별 용어 자동 번역·캐싱. DDD 설계 + WebSocket 실시간 알림 + 역할별 칸반/리스트 뷰",
+              techs: ["Spring AI", "WebSocket", "React 19", "Docker"],
+              period: "2026.04 ~",
+              href: "/projects#syncbridge",
+            },
+            {
+              name: "KnotNote",
+              ko: "연결 중심 지식 관리",
+              desc: "NoteLink 양방향 연결 + NoteEmbedding AI 확장 설계. 2종 에디터 직접 구현. Swagger 문서화",
+              techs: ["Spring Boot", "JPA", "React 18", "JWT"],
+              period: "2026.04 ~",
+              href: "/projects#knotnote",
             },
             {
               name: "Spring MVC Migration",
               ko: "왜 Spring이 필요한가",
-              desc: "JSP/Servlet Model2 기반 게시판을 Spring MVC + MyBatis 계층형 아키텍처로 재설계·마이그레이션",
-              techs: ["Java", "Spring MVC", "MyBatis", "MySQL"],
+              desc: "JSP/Servlet Model2 → Spring MVC 6.2 + MyBatis 계층형 아키텍처 직접 마이그레이션. Docker 배포",
+              techs: ["Spring MVC", "MyBatis", "Security", "Docker"],
               period: "2025.12 ~ 26.01",
-              href: "/projects",
+              href: "/projects#spring-mvc-migration",
             },
             {
               name: "Creative Archive",
               ko: "디자인 자산물 아카이빙",
-              desc: "BGF 재직 시절 디자인 자산물을 아카이빙한 React 기반 포트폴리오 카탈로그",
+              desc: "Redux Toolkit 기반 카탈로그 포트폴리오. createSelector 메모이제이션, 다크/라이트 모드",
               techs: ["React 18", "Redux Toolkit", "Vite"],
               period: "2025.12",
-              href: "/projects",
+              href: "/projects#creative-archive",
             },
             {
               name: "62댕냥",
               ko: "유기동물 입양 매칭",
-              desc: "공공데이터 API 기반 유기동물 입양·임시보호 매칭 플랫폼",
-              techs: ["Spring Boot", "JPA", "MySQL", "React"],
+              desc: "공공데이터포털 API 증분 동기화 + OAuth 2.0 백채널 인증. 쇼핑몰→비영리 도메인 재해석",
+              techs: ["Spring Boot", "JPA", "AWS", "React"],
               period: "2026.02",
-              href: "/projects",
+              href: "/projects#62dangnyang",
             },
           ].map((p, i) => (
             <a
@@ -677,7 +699,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
               style="padding:28px; display:flex; flex-direction:column;"
             >
               <div class="flex items-center justify-between gap-3 mb-4">
-                <span class="ds-badge">{i === 0 ? "Featured" : "Project"}</span>
+                <span class="ds-badge">{i < 3 ? "★ Featured" : "Project"}</span>
                 <span style="font-family:var(--font-mono); font-size:11px; color:var(--fg-4);">
                   PROJECT · {String(i + 1).padStart(2, "0")}
                 </span>
@@ -709,7 +731,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       </div>
       <div class="text-center mt-12">
         <a href="/projects" class="ds-btn ghost"
-          >전체 프로젝트 보기 <span class="arr">→</span>
+          >전체 프로젝트 보기 ({8}개) <span class="arr">→</span>
         </a>
       </div>
     </section>
@@ -741,7 +763,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           GitHub <span class="arr" style="color:var(--accent-text);">↗</span>
         </a>
         <a
-          href="https://blog.ssunhy.com/"
+          href="https://ssunhy.com/"
           target="_blank"
           rel="noopener noreferrer"
           class="contact-link"
@@ -758,9 +780,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
               d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
             ></path>
           </svg>
-          기술 블로그 <span class="arr" style="color:var(--accent-text);"
-            >↗</span
-          >
+          Blog <span class="arr" style="color:var(--accent-text);">↗</span>
         </a>
         <a href="mailto:hayohio@gmail.com" class="contact-link">
           <svg

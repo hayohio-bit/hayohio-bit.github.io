@@ -6,284 +6,711 @@ import { SITE_TITLE } from "../consts";
 ---
 
 <html lang="ko" class="dark scroll-smooth">
-<head>
-  <BaseHead title={`이력서 — ${SITE_TITLE}`} description="백엔드 개발자 선하영의 이력서입니다." />
-  <style>
-    .resume-main { max-width:860px; margin:0 auto; padding:100px 56px; }
-    .resume-header { text-align:center; margin-bottom:64px; }
-    .resume-name { font-size:clamp(36px,5vw,48px); font-weight:700; letter-spacing:-0.03em; margin:0; color:var(--fg-1); }
-    .resume-role { font-family:var(--font-mono); font-size:17px; font-weight:500; color:var(--accent-text); margin-top:12px; }
-    .resume-intro { font-size:15px; color:var(--fg-3); max-width:48ch; margin:20px auto 0; line-height:1.65; }
-    .resume-links { display:flex; justify-content:center; gap:16px; margin-top:24px; flex-wrap:wrap; font-family:var(--font-mono); font-size:12px; }
-    .resume-links a { color:var(--fg-3); text-decoration:none; transition:color 0.2s; }
-    .resume-links a:hover { color:var(--accent-text); }
-    .resume-links .sep { color:var(--fg-5); }
+  <head>
+    <BaseHead
+      title={`이력서 — ${SITE_TITLE}`}
+      description="백엔드 개발자 선하영의 이력서입니다."
+    />
+    <style>
+      .resume-main {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 100px 56px;
+      }
+      .resume-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      .resume-name {
+        font-size: clamp(36px, 5vw, 48px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin: 0;
+        color: var(--fg-1);
+      }
+      .resume-role {
+        font-family: var(--font-mono);
+        font-size: 17px;
+        font-weight: 500;
+        color: var(--accent-text);
+        margin-top: 12px;
+      }
+      .resume-intro {
+        font-size: 15px;
+        color: var(--fg-3);
+        max-width: 48ch;
+        margin: 20px auto 0;
+        line-height: 1.65;
+      }
+      .resume-links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+      .resume-links a {
+        color: var(--fg-3);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .resume-links a:hover {
+        color: var(--accent-text);
+      }
+      .resume-links .sep {
+        color: var(--fg-5);
+      }
 
-    .section { margin-bottom:56px; }
-    .section-title { font-size:20px; font-weight:600; color:var(--fg-1); padding-bottom:12px; border-bottom:2px solid var(--accent); margin-bottom:28px; margin-top:0; }
+      .section {
+        margin-bottom: 56px;
+      }
+      .section-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--fg-1);
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--accent);
+        margin-bottom: 28px;
+        margin-top: 0;
+      }
 
-    .timeline-item { position:relative; padding-left:28px; border-left:2px solid var(--border-2); margin-bottom:32px; }
-    .timeline-item:last-child { margin-bottom:0; }
-    .timeline-item::before { content:""; position:absolute; left:-7px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid var(--bg-0); }
+      .timeline-item {
+        position: relative;
+        padding-left: 28px;
+        border-left: 2px solid var(--border-2);
+        margin-bottom: 32px;
+      }
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -7px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 2px solid var(--bg-0);
+      }
 
-    .tl-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:6px; }
-    .tl-title { font-size:18px; font-weight:600; color:var(--fg-1); margin:0; }
-    .tl-period { font-family:var(--font-mono); font-size:12px; color:var(--fg-4); white-space:nowrap; }
-    .tl-role { font-family:var(--font-mono); font-size:12px; color:var(--accent-text); margin-bottom:8px; }
-    .tl-deploy { font-size:12px; color:var(--fg-3); margin-bottom:12px; }
-    .tl-deploy a { color:var(--accent-text); text-decoration:underline; text-underline-offset:2px; }
+      .tl-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+      .tl-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--fg-1);
+        margin: 0;
+      }
+      .tl-period {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--fg-4);
+        white-space: nowrap;
+      }
+      .tl-role {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--accent-text);
+        margin-bottom: 8px;
+      }
+      .tl-deploy {
+        font-size: 12px;
+        color: var(--fg-3);
+        margin-bottom: 12px;
+      }
+      .tl-deploy a {
+        color: var(--accent-text);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
 
-    .tl-label { font-family:var(--font-mono); font-size:10px; color:var(--fg-4); letter-spacing:.12em; text-transform:uppercase; margin-bottom:6px; }
-    .tl-desc { font-size:14px; color:var(--fg-2); line-height:1.6; margin-bottom:12px; }
-    .tl-list { font-size:13px; color:var(--fg-2); line-height:1.65; list-style:disc; padding-left:18px; margin:0 0 12px; }
-    .tl-list li { margin-bottom:4px; }
+      .tl-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-4);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .tl-desc {
+        font-size: 14px;
+        color: var(--fg-2);
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+      .tl-list {
+        font-size: 13px;
+        color: var(--fg-2);
+        line-height: 1.65;
+        list-style: disc;
+        padding-left: 18px;
+        margin: 0 0 12px;
+      }
+      .tl-list li {
+        margin-bottom: 4px;
+      }
 
-    .insight-box { padding:14px 18px; border-radius:var(--r-md); background:var(--accent-soft); border:1px solid var(--accent-line); font-size:13px; line-height:1.55; color:var(--fg-2); margin-top:12px; }
-    .insight-box strong { color:var(--accent-text); font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; display:block; margin-bottom:4px; }
+      .insight-box {
+        padding: 14px 18px;
+        border-radius: var(--r-md);
+        background: var(--accent-soft);
+        border: 1px solid var(--accent-line);
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--fg-2);
+        margin-top: 12px;
+      }
+      .insight-box strong {
+        color: var(--accent-text);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 4px;
+      }
 
-    .skill-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-    .skill-group h3 { font-size:15px; font-weight:600; color:var(--fg-1); margin:0 0 10px; }
-    .skill-tags { display:flex; flex-wrap:wrap; gap:6px; }
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .skill-group h3 {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--fg-1);
+        margin: 0 0 10px;
+      }
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
 
-    .edu-card { padding:20px 24px; background:var(--bg-1); border:1px solid var(--border-2); border-radius:var(--r-lg); margin-bottom:12px; }
-    .edu-card h3 { font-size:16px; font-weight:600; color:var(--fg-1); margin:0 0 4px; }
-    .edu-card .meta { font-family:var(--font-mono); font-size:12px; color:var(--fg-4); }
-    .edu-card p { font-size:13px; color:var(--fg-3); margin:8px 0 0; }
+      .edu-card {
+        padding: 20px 24px;
+        background: var(--bg-1);
+        border: 1px solid var(--border-2);
+        border-radius: var(--r-lg);
+        margin-bottom: 12px;
+      }
+      .edu-card h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--fg-1);
+        margin: 0 0 4px;
+      }
+      .edu-card .meta {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--fg-4);
+      }
+      .edu-card p {
+        font-size: 13px;
+        color: var(--fg-3);
+        margin: 8px 0 0;
+      }
 
-    .link-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-    .link-card { display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--bg-1); border:1px solid var(--border-2); border-radius:var(--r-lg); text-decoration:none; transition:border-color 0.2s, transform 0.2s; color:inherit; }
-    .link-card:hover { border-color:var(--accent-line); transform:translateY(-2px); text-decoration:none; }
-    .link-card .lc-name { font-size:14px; font-weight:600; color:var(--fg-1); }
-    .link-card .lc-url { font-family:var(--font-mono); font-size:11px; color:var(--fg-4); }
+      .link-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .link-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 20px;
+        background: var(--bg-1);
+        border: 1px solid var(--border-2);
+        border-radius: var(--r-lg);
+        text-decoration: none;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        color: inherit;
+      }
+      .link-card:hover {
+        border-color: var(--accent-line);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+      .link-card .lc-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--fg-1);
+      }
+      .link-card .lc-url {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-4);
+      }
 
-    @media (max-width:640px) {
-      .resume-main { padding:64px 20px; }
-      .skill-grid { grid-template-columns:1fr; }
-      .link-grid { grid-template-columns:1fr; }
-    }
-  </style>
-</head>
-<body>
-  <Header />
+      @media (max-width: 640px) {
+        .resume-main {
+          padding: 64px 20px;
+        }
+        .skill-grid {
+          grid-template-columns: 1fr;
+        }
+        .link-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
 
-  <main class="resume-main">
-    <!-- Header -->
-    <div class="resume-header">
-      <h1 class="resume-name">선하영</h1>
-      <p class="resume-role">Backend Developer</p>
-      <p class="resume-intro">
-        9년간의 사무·기획 실무를 거치며 업무 프로세스의 구조화와 데이터 무결성의 중요성을 체득했습니다.<br/>
-        파편화된 데이터와 시스템 한계에서 오는 불편함을 직접 해결하고자 개발자로 전향했습니다.
-      </p>
-      <div class="resume-links">
-        <a href="https://github.com/hayohio-bit" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <span class="sep">·</span>
-        <a href="https://blog.ssunhy.com/" target="_blank" rel="noopener noreferrer">기술 블로그</a>
-        <span class="sep">·</span>
-        <a href="mailto:hayohio@gmail.com">hayohio@gmail.com</a>
+    <main class="resume-main">
+      <!-- Header -->
+      <div class="resume-header">
+        <h1 class="resume-name">선하영</h1>
+        <p class="resume-role">Backend Developer</p>
+        <p class="resume-intro">
+          9년간의 사무·기획 실무를 거치며 업무 프로세스의 구조화와 <br />
+          데이터 무결성의 중요성을 체득했습니다.<br />
+          파편화된 데이터와 시스템 한계에서 오는 불편함을
+          <br />직접 해결하고자 개발자로 전향했습니다.
+        </p>
+        <div class="resume-links">
+          <a
+            href="https://github.com/hayohio-bit"
+            target="_blank"
+            rel="noopener noreferrer">GitHub</a
+          >
+          <span class="sep">·</span>
+          <a
+            href="https://ssunhy.com/"
+            target="_blank"
+            rel="noopener noreferrer">Blog</a
+          >
+          <span class="sep">·</span>
+          <a href="mailto:hayohio@gmail.com">hayohio@gmail.com</a>
+        </div>
       </div>
-    </div>
 
-    <!-- Experience -->
-    <section class="section">
-      <h2 class="section-title">Experience</h2>
+      <!-- Experience -->
+      <section class="section">
+        <h2 class="section-title">Experience</h2>
 
-      <!-- Spring MVC Migration -->
-      <div class="timeline-item">
-        <div class="tl-head">
-          <h3 class="tl-title">Spring MVC Migration</h3>
-          <span class="tl-period">2025.12 ~ 2026.01</span>
+        <!-- Spring MVC Migration -->
+        <div class="timeline-item">
+          <div class="tl-head">
+            <h3 class="tl-title">Spring MVC Migration</h3>
+            <span class="tl-period">2025.12 ~ 2026.01</span>
+          </div>
+          <div class="tl-role">개인 프로젝트 · Backend 전담</div>
+          <div class="tl-deploy">
+            🔗 <a
+              href="https://daechul-spring-legacy.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer">배포 URL</a
+            > · <a
+              href="https://github.com/hayohio-bit/daechul-spring-legacy"
+              target="_blank"
+              rel="noopener noreferrer">GitHub</a
+            >
+          </div>
+          <div class="tl-label">Description</div>
+          <p class="tl-desc">
+            JSP/Servlet Model2 기반 팀 게시판을 Spring Legacy(Spring MVC +
+            MyBatis) 계층형 아키텍처로 직접 재설계·마이그레이션한 프로젝트
+          </p>
+          <div class="tl-label">What did I do</div>
+          <ul class="tl-list">
+            <li>
+              ActionFactory 수동 if-else 매핑 → DispatcherServlet +
+              @RequestMapping 선언적 라우팅으로 전환, 코드량 대폭 감소
+            </li>
+            <li>
+              BoardDAO(JDBC 직접 연결) → @Mapper 인터페이스 + MyBatis XML SQL로
+              쿼리와 코드 분리
+            </li>
+            <li>
+              getInstance() 수동 Singleton → @Autowired DI(Spring IoC)로 결합도
+              감소
+            </li>
+          </ul>
+          <div class="tl-label">Tech Stack</div>
+          <div class="skill-tags">
+            {
+              [
+                "Java",
+                "Spring Framework 5.x",
+                "Spring MVC",
+                "MyBatis",
+                "MySQL 8",
+                "JSP",
+                "Render",
+              ].map((t) => <span class="ds-chip">{t}</span>)
+            }
+          </div>
         </div>
-        <div class="tl-role">개인 프로젝트 · Backend 전담</div>
-        <div class="tl-deploy">
-          🔗 <a href="https://daechul-spring-legacy.onrender.com/" target="_blank" rel="noopener noreferrer">배포 URL</a> · <a href="https://github.com/hayohio-bit/daechul-spring-legacy" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-        <div class="tl-label">Description</div>
-        <p class="tl-desc">JSP/Servlet Model2 기반 팀 게시판을 Spring Legacy(Spring MVC + MyBatis) 계층형 아키텍처로 직접 재설계·마이그레이션한 프로젝트</p>
-        <div class="tl-label">What did I do</div>
-        <ul class="tl-list">
-          <li>ActionFactory 수동 if-else 매핑 → DispatcherServlet + @RequestMapping 선언적 라우팅으로 전환, 코드량 대폭 감소</li>
-          <li>BoardDAO(JDBC 직접 연결) → @Mapper 인터페이스 + MyBatis XML SQL로 쿼리와 코드 분리</li>
-          <li>getInstance() 수동 Singleton → @Autowired DI(Spring IoC)로 결합도 감소</li>
-        </ul>
-        <div class="tl-label">Tech Stack</div>
-        <div class="skill-tags">
-          {["Java", "Spring Framework 5.x", "Spring MVC", "MyBatis", "MySQL 8", "JSP", "Render"].map(t => <span class="ds-chip">{t}</span>)}
-        </div>
-      </div>
 
-      <!-- DayPoo -->
-      <div class="timeline-item">
-        <div class="tl-head">
-          <h3 class="tl-title">DayPoo</h3>
-          <span class="tl-period">2026.03 ~ 2026.04</span>
+        <!-- DayPoo -->
+        <div class="timeline-item">
+          <div class="tl-head">
+            <h3 class="tl-title">DayPoo</h3>
+            <span class="tl-period">2026.03 ~ 2026.04</span>
+          </div>
+          <div class="tl-role">
+            팀 프로젝트 (3인) · Backend 인증·보안 / 결제 / CI·CD
+          </div>
+          <div class="tl-deploy">
+            🔗 <a
+              href="https://daypoo.8o2.site"
+              target="_blank"
+              rel="noopener noreferrer">배포 URL</a
+            > · <a
+              href="https://github.com/hayohio-bit/daypoo"
+              target="_blank"
+              rel="noopener noreferrer">GitHub</a
+            >
+          </div>
+          <div class="tl-label">Description</div>
+          <p class="tl-desc">
+            전국 5만여 건 공공 화장실 데이터를 지도로 시각화하고, 배변 기록을
+            AI(GPT-4o Vision)로 분석해 건강 인사이트를 제공하는 위치 기반 생활
+            편의 서비스
+          </p>
+          <div class="tl-label">What did I do</div>
+          <ul class="tl-list">
+            <li>
+              JWT Access/Refresh Token 전략 수립 및 OAuth2 카카오 소셜 로그인
+              구현
+            </li>
+            <li>Redis Rate Limiting(Throttling) — API 남용 방지 시스템 구축</li>
+            <li>
+              토스페이먼츠 SDK 기반 결제 승인/취소 API + 멱등성 보장 중복 결제
+              방지
+            </li>
+            <li>
+              Docker 멀티스테이지 빌드로 팀 환경 표준화, GitHub Actions CI/CD
+              파이프라인 구축
+            </li>
+            <li>Nginx 리버스 프록시 및 SSL 터미네이션 적용</li>
+          </ul>
+          <div class="tl-label">Tech Stack</div>
+          <div class="skill-tags">
+            {
+              [
+                "Java 21",
+                "Spring Boot 3.4",
+                "Spring Security",
+                "JWT",
+                "OAuth2",
+                "PostgreSQL+PostGIS",
+                "Redis",
+                "Docker",
+                "GitHub Actions",
+              ].map((t) => <span class="ds-chip">{t}</span>)
+            }
+          </div>
         </div>
-        <div class="tl-role">팀 프로젝트 (3인) · Backend 인증·보안 / 결제 / CI·CD</div>
-        <div class="tl-deploy">
-          🔗 <a href="https://daypoo.8o2.site" target="_blank" rel="noopener noreferrer">배포 URL</a> · <a href="https://github.com/hayohio-bit/daypoo" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-        <div class="tl-label">Description</div>
-        <p class="tl-desc">전국 5만여 건 공공 화장실 데이터를 지도로 시각화하고, 배변 기록을 AI(GPT-4o Vision)로 분석해 건강 인사이트를 제공하는 위치 기반 생활 편의 서비스</p>
-        <div class="tl-label">What did I do</div>
-        <ul class="tl-list">
-          <li>JWT Access/Refresh Token 전략 수립 및 OAuth2 카카오 소셜 로그인 구현</li>
-          <li>Redis Rate Limiting(Throttling) — API 남용 방지 시스템 구축</li>
-          <li>토스페이먼츠 SDK 기반 결제 승인/취소 API + 멱등성 보장 중복 결제 방지</li>
-          <li>Docker 멀티스테이지 빌드로 팀 환경 표준화, GitHub Actions CI/CD 파이프라인 구축</li>
-          <li>Nginx 리버스 프록시 및 SSL 터미네이션 적용</li>
-        </ul>
-        <div class="tl-label">Tech Stack</div>
-        <div class="skill-tags">
-          {["Java 21", "Spring Boot 3.4", "Spring Security", "JWT", "OAuth2", "PostgreSQL+PostGIS", "Redis", "Docker", "GitHub Actions"].map(t => <span class="ds-chip">{t}</span>)}
-        </div>
-      </div>
 
-      <!-- Creative Archive -->
-      <div class="timeline-item">
-        <div class="tl-head">
-          <h3 class="tl-title">Creative Archive</h3>
-          <span class="tl-period">2025.12</span>
+        <!-- Creative Archive -->
+        <div class="timeline-item">
+          <div class="tl-head">
+            <h3 class="tl-title">Creative Archive</h3>
+            <span class="tl-period">2025.12</span>
+          </div>
+          <div class="tl-role">개인 프로젝트 · Frontend 전담</div>
+          <div class="tl-deploy">
+            🔗 <a
+              href="https://hayohio-bit.github.io/hayohio-portfolio/"
+              target="_blank"
+              rel="noopener noreferrer">배포 URL</a
+            > · <a
+              href="https://github.com/hayohio-bit/hayohio-portfolio"
+              target="_blank"
+              rel="noopener noreferrer">GitHub</a
+            >
+          </div>
+          <div class="tl-label">Description</div>
+          <p class="tl-desc">
+            BGF 재직 시절 제작한 디자인 자산물을 아카이빙한 React 기반
+            포트폴리오 카탈로그. Redux Toolkit 상태 관리 실습 목적
+          </p>
+          <div class="tl-label">What did I do</div>
+          <ul class="tl-list">
+            <li>
+              Redux Slice 패턴 + createSelector 메모이제이션으로 무한 렌더링
+              해결
+            </li>
+            <li>
+              useCallback + debounce 300ms 기반 실시간 검색, 카테고리 필터, 정렬
+              4종 구현
+            </li>
+            <li>Context API 다크/라이트 모드 토글 + localStorage 상태 지속</li>
+          </ul>
+          <div class="tl-label">Tech Stack</div>
+          <div class="skill-tags">
+            {
+              [
+                "React 18",
+                "Vite",
+                "Redux Toolkit",
+                "React Router v6",
+                "CSS Modules",
+                "GitHub Pages",
+              ].map((t) => <span class="ds-chip">{t}</span>)
+            }
+          </div>
         </div>
-        <div class="tl-role">개인 프로젝트 · Frontend 전담</div>
-        <div class="tl-deploy">
-          🔗 <a href="https://hayohio-bit.github.io/hayohio-portfolio/" target="_blank" rel="noopener noreferrer">배포 URL</a> · <a href="https://github.com/hayohio-bit/hayohio-portfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-        <div class="tl-label">Description</div>
-        <p class="tl-desc">BGF 재직 시절 제작한 디자인 자산물을 아카이빙한 React 기반 포트폴리오 카탈로그. Redux Toolkit 상태 관리 실습 목적</p>
-        <div class="tl-label">What did I do</div>
-        <ul class="tl-list">
-          <li>Redux Slice 패턴 + createSelector 메모이제이션으로 무한 렌더링 해결</li>
-          <li>useCallback + debounce 300ms 기반 실시간 검색, 카테고리 필터, 정렬 4종 구현</li>
-          <li>Context API 다크/라이트 모드 토글 + localStorage 상태 지속</li>
-        </ul>
-        <div class="tl-label">Tech Stack</div>
-        <div class="skill-tags">
-          {["React 18", "Vite", "Redux Toolkit", "React Router v6", "CSS Modules", "GitHub Pages"].map(t => <span class="ds-chip">{t}</span>)}
-        </div>
-      </div>
 
-      <!-- BGF 리테일 -->
-      <div class="timeline-item">
-        <div class="tl-head">
-          <h3 class="tl-title">BGF 리테일</h3>
-          <span class="tl-period">2022.12 ~ 2025.02</span>
+        <!-- BGF 리테일 -->
+        <div class="timeline-item">
+          <div class="tl-head">
+            <h3 class="tl-title">BGF 리테일</h3>
+            <span class="tl-period">2022.12 ~ 2025.02</span>
+          </div>
+          <div class="tl-role">Project개발팀 & 개발기획팀</div>
+          <ul class="tl-list">
+            <li>
+              B2B 입찰 정보, 인허가 관리, 서무 예산 처리 및 현장 소통 채널
+              일원화
+            </li>
+            <li>
+              일일 입찰현황 시스템을 1년치 데이터 축적·대시보드 자동 연동 구조로
+              재설계, VBA 매크로 전환으로 성능 개선
+            </li>
+          </ul>
+          <div class="insight-box">
+            <strong>💡 Developer Insight</strong>
+            예외나 누락이 용납되지 않는 대관 인허가 및 재무 데이터를 다룬 경험 → 엣지
+            케이스에 강한 방어적 API 설계와 DB 무결성 유지
+          </div>
         </div>
-        <div class="tl-role">Project개발팀 & 개발기획팀</div>
-        <ul class="tl-list">
-          <li>B2B 입찰 정보, 인허가 관리, 서무 예산 처리 및 현장 소통 채널 일원화</li>
-          <li>일일 입찰현황 시스템을 1년치 데이터 축적·대시보드 자동 연동 구조로 재설계, VBA 매크로 전환으로 성능 개선</li>
-        </ul>
-        <div class="insight-box">
-          <strong>💡 Developer Insight</strong>
-          예외나 누락이 용납되지 않는 대관 인허가 및 재무 데이터를 다룬 경험 → 엣지 케이스에 강한 방어적 API 설계와 DB 무결성 유지
-        </div>
-      </div>
 
-      <!-- BGF -->
-      <div class="timeline-item">
-        <div class="tl-head">
-          <h3 class="tl-title">BGF</h3>
-          <span class="tl-period">2018.02 ~ 2022.11</span>
+        <!-- BGF -->
+        <div class="timeline-item">
+          <div class="tl-head">
+            <h3 class="tl-title">BGF</h3>
+            <span class="tl-period">2018.02 ~ 2022.11</span>
+          </div>
+          <div class="tl-role">경영진단팀</div>
+          <ul class="tl-list">
+            <li>
+              윤리경영 캠페인 기획, 경영진단 자료 수집, 엑셀 기반 정량 데이터
+              가공·분석
+            </li>
+            <li>
+              경비처리 자동화(오피넷 API 연동), 크롤링 독학, 사내 포탈 HTML/CSS
+              슬라이드 구현
+            </li>
+          </ul>
+          <div class="insight-box">
+            <strong>💡 Developer Insight</strong>
+            방대한 수작업 분석을 매크로와 고급 함수로 효율화하며 '자동화'의 가치를
+            체득 → 데이터 기반 문제 정의·지표화 역량
+          </div>
         </div>
-        <div class="tl-role">경영진단팀</div>
-        <ul class="tl-list">
-          <li>윤리경영 캠페인 기획, 경영진단 자료 수집, 엑셀 기반 정량 데이터 가공·분석</li>
-          <li>경비처리 자동화(오피넷 API 연동), 크롤링 독학, 사내 포탈 HTML/CSS 슬라이드 구현</li>
-        </ul>
-        <div class="insight-box">
-          <strong>💡 Developer Insight</strong>
-          방대한 수작업 분석을 매크로와 고급 함수로 효율화하며 '자동화'의 가치를 체득 → 데이터 기반 문제 정의·지표화 역량
-        </div>
-      </div>
 
-      <!-- 삼성화재 -->
-      <div class="timeline-item">
-        <div class="tl-head">
-          <h3 class="tl-title">삼성화재</h3>
-          <span class="tl-period">2015.08 ~ 2017.08</span>
+        <!-- 삼성화재 -->
+        <div class="timeline-item">
+          <div class="tl-head">
+            <h3 class="tl-title">삼성화재</h3>
+            <span class="tl-period">2015.08 ~ 2017.08</span>
+          </div>
+          <div class="tl-role">장기상품개발팀</div>
+          <ul class="tl-list">
+            <li>
+              임원 일정/업무지원, SAP 시스템 기반 경비 및 전자세금계산서 정산
+              지원
+            </li>
+          </ul>
         </div>
-        <div class="tl-role">장기상품개발팀</div>
-        <ul class="tl-list">
-          <li>임원 일정/업무지원, SAP 시스템 기반 경비 및 전자세금계산서 정산 지원</li>
-        </ul>
-      </div>
-    </section>
+      </section>
 
-    <!-- Skills -->
-    <section class="section">
-      <h2 class="section-title">Skills</h2>
-      <div class="skill-grid">
-        {[
-          { category: "Backend", items: ["Java 21", "Spring Boot 3.x", "Spring MVC", "Spring Data JPA", "MyBatis", "Spring Security", "JWT", "OAuth2"] },
-          { category: "Database", items: ["MySQL 8", "PostgreSQL+PostGIS", "Redis", "H2"] },
-          { category: "Frontend", items: ["React 18", "TypeScript", "Vite", "Redux Toolkit", "Tailwind CSS"] },
-          { category: "Infra & DevOps", items: ["AWS (EC2, S3, CloudFront)", "Docker", "GitHub Actions", "Nginx", "Linux"] },
-        ].map((skill) => (
-          <div class="skill-group">
-            <h3>{skill.category}</h3>
-            <div class="skill-tags">
-              {skill.items.map((item) => <span class="ds-chip">{item}</span>)}
+      <!-- Skills -->
+      <section class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skill-grid">
+          {
+            [
+              {
+                category: "Backend",
+                items: [
+                  "Java 21",
+                  "Spring Boot 3.x",
+                  "Spring MVC",
+                  "Spring Data JPA",
+                  "MyBatis",
+                  "Spring Security",
+                  "JWT",
+                  "OAuth2",
+                ],
+              },
+              {
+                category: "Database",
+                items: ["MySQL 8", "PostgreSQL+PostGIS", "Redis", "H2"],
+              },
+              {
+                category: "Frontend",
+                items: [
+                  "React 18",
+                  "TypeScript",
+                  "Vite",
+                  "Redux Toolkit",
+                  "Tailwind CSS",
+                ],
+              },
+              {
+                category: "Infra & DevOps",
+                items: [
+                  "AWS (EC2, S3, CloudFront)",
+                  "Docker",
+                  "GitHub Actions",
+                  "Nginx",
+                  "Linux",
+                ],
+              },
+            ].map((skill) => (
+              <div class="skill-group">
+                <h3>{skill.category}</h3>
+                <div class="skill-tags">
+                  {skill.items.map((item) => (
+                    <span class="ds-chip">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-card">
+          <div
+            style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px;"
+          >
+            <h3>DevOps 풀스택 개발자 양성 과정</h3>
+            <span class="meta">2025.10 ~ 2026.04</span>
+          </div>
+          <p>
+            총 1,140시간 수료 · Java, Spring Boot, JPA, React, Docker, AWS 기반
+            풀스택 실습
+          </p>
+        </div>
+        <div class="edu-card">
+          <div
+            style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px;"
+          >
+            <h3>배화여자대학교</h3>
+            <span class="meta">2013.03 ~ 2015.02</span>
+          </div>
+          <p>비서행정학과 · 전문학사</p>
+        </div>
+      </section>
+
+      <!-- Links -->
+      <section class="section">
+        <h2 class="section-title">Links</h2>
+        <div class="link-grid">
+          <a
+            href="https://github.com/hayohio-bit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-card"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color:var(--fg-3); flex-shrink:0;"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              ></path></svg
+            >
+            <div>
+              <div class="lc-name">GitHub</div>
+              <div class="lc-url">github.com/hayohio-bit</div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="section">
-      <h2 class="section-title">Education</h2>
-      <div class="edu-card">
-        <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px;">
-          <h3>DevOps 풀스택 개발자 양성 과정</h3>
-          <span class="meta">2025.10 ~ 2026.04</span>
+          </a>
+          <a
+            href="https://ssunhy.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-card"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color:var(--fg-3); flex-shrink:0;"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+              ></path></svg
+            >
+            <div>
+              <div class="lc-name">Blog</div>
+              <div class="lc-url">ssunhy.com</div>
+            </div>
+          </a>
+          <a
+            href="https://hayohio-bit.github.io/hayohio-portfolio/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-card"
+          >
+            <svg
+              class="w-5 h-5"
+              style="color:var(--fg-3); flex-shrink:0;"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path></svg
+            >
+            <div>
+              <div class="lc-name">디자인 포트폴리오</div>
+              <div class="lc-url">이전 직장 디자인 작업물 아카이브</div>
+            </div>
+          </a>
+          <a href="mailto:hayohio@gmail.com" class="link-card">
+            <svg
+              class="w-5 h-5"
+              style="color:var(--fg-3); flex-shrink:0;"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path></svg
+            >
+            <div>
+              <div class="lc-name">Email</div>
+              <div class="lc-url">hayohio@gmail.com</div>
+            </div>
+          </a>
         </div>
-        <p>총 1,140시간 수료 · Java, Spring Boot, JPA, React, Docker, AWS 기반 풀스택 실습</p>
-      </div>
-      <div class="edu-card">
-        <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px;">
-          <h3>배화여자대학교</h3>
-          <span class="meta">2013.03 ~ 2015.02</span>
-        </div>
-        <p>비서행정학과 · 전문학사</p>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Links -->
-    <section class="section">
-      <h2 class="section-title">Links</h2>
-      <div class="link-grid">
-        <a href="https://github.com/hayohio-bit" target="_blank" rel="noopener noreferrer" class="link-card">
-          <svg class="w-5 h-5" style="color:var(--fg-3); flex-shrink:0;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-          <div>
-            <div class="lc-name">GitHub</div>
-            <div class="lc-url">github.com/hayohio-bit</div>
-          </div>
-        </a>
-        <a href="https://blog.ssunhy.com/" target="_blank" rel="noopener noreferrer" class="link-card">
-          <svg class="w-5 h-5" style="color:var(--fg-3); flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
-          <div>
-            <div class="lc-name">기술 블로그</div>
-            <div class="lc-url">blog.ssunhy.com</div>
-          </div>
-        </a>
-        <a href="https://hayohio-bit.github.io/hayohio-portfolio/" target="_blank" rel="noopener noreferrer" class="link-card">
-          <svg class="w-5 h-5" style="color:var(--fg-3); flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          <div>
-            <div class="lc-name">디자인 포트폴리오</div>
-            <div class="lc-url">이전 직장 디자인 작업물 아카이브</div>
-          </div>
-        </a>
-        <a href="mailto:hayohio@gmail.com" class="link-card">
-          <svg class="w-5 h-5" style="color:var(--fg-3); flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          <div>
-            <div class="lc-name">Email</div>
-            <div class="lc-url">hayohio@gmail.com</div>
-          </div>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</body>
+    <Footer />
+  </body>
 </html>

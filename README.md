@@ -7,7 +7,7 @@
 
 <br/>
 
-<a href="https://hayohio-bit.github.io" target="_blank"><strong>🌐 포트폴리오 웹사이트 방문하기 (Live Site)</strong></a>
+[**🌐 포트폴리오 웹사이트 방문하기 (Live Site)**](https://hayohio-bit.github.io)
 
 </div>
 
@@ -25,10 +25,10 @@
 
 ## 👤 Contact & Links
 
-- ✉️ **Email**: <a href="mailto:hayohio@gmail.com" target="_blank">hayohio@gmail.com</a>
-- 🐙 **GitHub**: <a href="https://github.com/hayohio-bit" target="_blank">@hayohio-bit</a>
-- 📝 **Blog**: <a href="https://ssunhy.com/" target="_blank">ssunhy.com</a>
-- 💼 **LinkedIn**: <a href="https://www.linkedin.com/in/sunhayoung" target="_blank">sunhayoung</a>
+- ✉️ **Email**: [hayohio@gmail.com](mailto:hayohio@gmail.com)
+- 🐙 **GitHub**: [@hayohio-bit](https://github.com/hayohio-bit)
+- 📝 **Blog**: [ssunhy.com](https://ssunhy.com/)
+- 💼 **LinkedIn**: [sunhayoung](https://www.linkedin.com/in/sunhayoung)
 
 ---
 

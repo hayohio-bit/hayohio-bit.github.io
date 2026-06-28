@@ -27,7 +27,7 @@
 
 - ✉️ **Email**: [hayohio@gmail.com](mailto:hayohio@gmail.com)
 - 🐙 **GitHub**: [@hayohio-bit](https://github.com/hayohio-bit)
-- 📝 **Blog**: [ssunhy.com](https://ssunhy.com/)
+- 📝 **Blog**: [dev.ssunhy.com](https://dev.ssunhy.com/)
 - 💼 **LinkedIn**: [sunhayoung](https://www.linkedin.com/in/sunhayoung)
 
 ---

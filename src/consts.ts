@@ -5,7 +5,7 @@ export const SITE_DESCRIPTION = '9년의 비즈니스 운영 경험으로 현업
 export const PERSONAL_INFO = {
   email: 'hayohio@gmail.com',
   github: 'https://github.com/hayohio-bit',
-  techBlog: 'https://ssunhy.com/',
+  techBlog: 'https://dev.ssunhy.com/',
   linkedin: 'www.linkedin.com/in/sunhayoung',
   designPortfolio: 'https://hayohio-bit.github.io/hayohio-portfolio/',
 };

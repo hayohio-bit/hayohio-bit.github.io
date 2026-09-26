@@ -34,5 +34,5 @@
 
 <div align="center">
   <br/>
-  <img src="https://raw.githubusercontent.com/hayohio-bit/hayohio-bit/output/github-contribution-grid-snake.svg" alt="GitHub Contribution Snake" />
+  <img src="https://raw.githubusercontent.com/hayohio-bit/hayohio-bit.github.io/output/github-contribution-grid-snake.svg" alt="GitHub Contribution Snake" />
 </div>

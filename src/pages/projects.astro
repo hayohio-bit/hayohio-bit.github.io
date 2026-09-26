@@ -49,7 +49,7 @@ import "../styles/project-detail.css";
         <span class="num">00</span><span class="ln"></span><span>projects</span>
       </div>
       <h1 style="font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:-0.03em;margin:10px 0 0;">
-        만든 것들<span style="color:var(--accent-text);">.</span>
+        만든 것들<span class="ds-dot">.</span>
       </h1>
       <p style="margin-top:14px;font-size:16px;color:var(--fg-3);max-width:52ch;line-height:1.55;word-break:keep-all;">
         부트캠프와 개인 프로젝트를 통해 만든 서비스들입니다.<br/>모든 프로젝트는 <strong style="color:var(--fg-1);">실제 서버 배포 과정을 거쳐 완성</strong>되었습니다.
@@ -133,7 +133,7 @@ import "../styles/project-detail.css";
               <div class="ds-eyebrow">
                 <span class="num">{String(PROJECTS.indexOf(p)+1).padStart(2,"0")}</span><span class="ln"></span><span>project</span>
               </div>
-              <h1>{p.title}<span style="color:var(--accent-text);">.</span></h1>
+              <h1>{p.title}<span class="ds-dot">.</span></h1>
               <p class="pd-tagline">{d.tagline}</p>
               <div class="flex flex-wrap gap-1.5" style="margin-bottom:20px;">
                 {p.techStack.map((t: string) => <span class="ds-chip">{t}</span>)}

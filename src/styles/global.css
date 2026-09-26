@@ -330,6 +330,16 @@ main {
 .ds-eyebrow .num { color: var(--accent-text); }
 .ds-eyebrow .ln  { width: 28px; height: 1px; background: var(--border-2); }
 
+/* ──── Heading accent dot ──── */
+.ds-dot { color: var(--accent-text); }
+
+/* ──── Icon button (theme toggle, hamburger) ──── */
+.ds-icon-btn {
+  background: var(--tint-1);
+  border: 1px solid var(--border-2);
+  color: var(--fg-3);
+}
+
 /* ──── Card ──── */
 .ds-card {
   position: relative;

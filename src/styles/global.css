@@ -6,6 +6,31 @@
    Dark Navy base + Blue accent
    ═══════════════════════════════════════════════ */
 
+/* 로컬 self-host — 외부 CDN(jsdelivr, Google Fonts) 요청 제거 */
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/pretendard-variable.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-variable.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-italic.woff2') format('woff2');
+}
+
 :root {
   /* ──── Typography ──── */
   --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;

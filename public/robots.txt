@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hayohio-bit.github.io/sitemap-index.xml
